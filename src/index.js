@@ -1,9 +1,21 @@
-import './config/ReactotronConfig';
-
 import React, { Component } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 
-import Todo from './components/Todo';
+import '~/config/ReactotronConfig';
+import '~/config/DevToolsConfig';
+
+import Todo from '~/components/Todo';
+
+const bgColor = '#F5FCFF';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: bgColor,
+  },
+});
 
 export default class App extends Component {
   state = {
@@ -27,12 +39,3 @@ export default class App extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});

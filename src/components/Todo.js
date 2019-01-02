@@ -1,22 +1,41 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { View, Text, StyleSheet } from "react-native";
+import {
+  View, Text, StyleSheet, Platform,
+} from 'react-native';
+
+/**
+ * Caso seja necessário diferenciar algo de acordo com o SO,
+ * é possível utilizar o Platform.select abaixo
+ * , fazer o teste {Platform.OS === 'ios' ? valores para iOS : valores para Android}
+ * ou a separação dos arquivos em Todo.ios.js e Todo.android.js
+ */
+const styles = StyleSheet.create({
+  text: {
+    ...Platform.select({
+      ios: {
+        fontWeight: 'bold',
+      },
+      android: {
+        fontSize: 24,
+      },
+    }),
+  },
+});
 
 const Todo = ({ title }) => (
   <View>
-    <Text>{title}</Text>
+    <Text style={styles.text}>{title}</Text>
   </View>
 );
 
 Todo.defaultProps = {
-  title: "default"
+  title: 'default',
 };
 
 Todo.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
 };
-
-const styles = StyleSheet.create({});
 
 export default Todo;
